@@ -46,27 +46,25 @@ function addToArray(){
 function displayResult(){
     
     //sort and find which elements are equal, which repeat the most, 
-    let count = {};
+    let count = [];
     let mostFrequent; 
 
-    function findMostFrequent(){
-        for (let i = 0; i < arr.length; i++){
-            let input = array[i];
+    
 
-            if(count[input] === 0){
-                count[input] = 1;
-            }
-            else {
-                count[input] = count[input] +1;
-            }
-            if(count[input] > x){
-                x = count[input];
-                mostFrequent = arr[i];
-            }
+    for (let i = 0; i < arr.length; i++){
+        let input = array[i];
+
+        if(count[input] === 0){
+            count[input] = 1;
         }
-        return mostFrequent;
+        else {
+            count[input] = count[input] +1;
+        }
+        if(count[input] > x){
+            x = count[input];
+            mostFrequent += arr[i];
+        }
     }
-     //https://amjustsam.medium.com/how-to-find-most-frequent-item-of-an-array-12015df68c65
      
     document.getElementById("result4a").innerHTML = `The Array is: ${arr}`;
     document.getElementById("result4b").innerHTML = `The element ${mostFrequent} appears ${count} times.`;
@@ -101,11 +99,8 @@ function selectNewsHeadline(){
 
     let displayNews = document.getElementById("news");
     
-    for (let i = 0; i < newsContent.length; i++){
-        if (newsContent[i] === headlines[i]){
-            displayNews.innerText = newsContent[i];
-        }
-    }
+    return displayNews.innerText = newsContent[headlines];
+
 }
 
 //////////////Solution 7//////////////////////
