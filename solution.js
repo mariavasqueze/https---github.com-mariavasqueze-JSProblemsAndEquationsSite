@@ -32,46 +32,39 @@ function changeColor(color){
 
 
 //////////////Solution 4//////////////////////
-let x = 0;
 let arr = [];
 
-// Add to array button function
+// Add to array, button function
 function addToArray(){
-    arr[x]= document.getElementById("arrayElement").value;
-    x++;
+    let input = document.getElementById("arrayElement").value;
+
+    if(input != ""){
+        arr.push(input);
+    }
+
+    document.getElementById("arrayElement").value = "";
     console.log(arr); //to check 
 }
 
-// Display button function  
+// Display array button function  
 function displayResult(){
     
-    //sort and find which elements are equal, which repeat the most, 
-    let count = [];
+    //sort and find which elements are equal, which repeat the most; 
+    let count = {};
     let mostFrequent; 
 
-    
+    arr.forEach(function(i) { count[i] = (count[i] || 0) + 1;});
+    console.log(count);
 
-    for (let i = 0; i < arr.length; i++){
-        let input = array[i];
-
-        if(count[input] === 0){
-            count[input] = 1;
-        }
-        else {
-            count[input] = count[input] +1;
-        }
-        if(count[input] > x){
-            x = count[input];
-            mostFrequent += arr[i];
-        }
+    //How to check wich counter element has more repetitions?
+    if(count[i] > count[i + 1]){
+        mostFrequent = count[i];
     }
-     
-    document.getElementById("result4a").innerHTML = `The Array is: ${arr}`;
-    document.getElementById("result4b").innerHTML = `The element ${mostFrequent} appears ${count} times.`;
-    return arr;
-
     
-    console.log(displayResult()); //to check
+ 
+    document.getElementById("result4a").innerHTML = `The Array is: [ ${arr} ]`;
+    document.getElementById("result4b").innerHTML = `The element ${mostFrequent} appears ${count[i]} times.`;
+
 }
 
 
@@ -137,7 +130,7 @@ function CalculateRoots(){
         } else if (b_squared === secondSection){
             printResult.innerHTML = "Solution: x = single-root";
         } else {
-            printResult.innerHTML = `Solution: x= ${root1.toFixed(3)}, x= ${root2.toFixed(3)}`;
+            printResult.innerHTML = `Solution: x = ${root1.toFixed(3)}, x = ${root2.toFixed(3)}`;
         }
     }   
 }
