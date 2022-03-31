@@ -1,9 +1,6 @@
 //////////////Solution 1//////////////////////
 // Function to calculate the tip amount that most be paid: 
 
-// if you don't add an onclick on the html element, must add this:
-// document.getElementById("calculate-tip").addEventListener("click", tips);
-
 function tips(){
 
     let totalBill = document.getElementById("amount").value;
@@ -24,10 +21,10 @@ function changeColor(color){
 //////////////Solution 3//////////////////////
 // Convert F to C by using promot and alert methods
 
-// let fahrenheit = prompt("Script Prompt: \nEnter Fahrenheit temperature ");
-// let celsius = (fahrenheit - 32) * 0.5556;
+let fahrenheit = prompt("Script Prompt: \nEnter Fahrenheit temperature ");
+let celsius = (fahrenheit - 32) * 0.5556;
 
-// alert("Fahrenheit temperature is " + fahrenheit + "\nCelsius temperature is " + Math.round(celsius));
+alert("Fahrenheit temperature is " + fahrenheit + "\nCelsius temperature is " + Math.round(celsius));
 
 
 
@@ -39,7 +36,7 @@ function addToArray(){
     let input = document.getElementById("arrayElement").value;
 
     if(input != ""){
-        arr.push(input);
+        arr.push(" " + input);
     }
 
     document.getElementById("arrayElement").value = "";
@@ -50,38 +47,44 @@ function addToArray(){
 function displayResult(){
     
     //sort and find which elements are equal, which repeat the most; 
-    let count = {};
-    let mostFrequent; 
+    let count = 0;
+    let compare = 1;
+    let mostFrequent = 0;
 
-    arr.forEach(function(i) { count[i] = (count[i] || 0) + 1;});
-    console.log(count);
+    for(let i = 0; i < arr.length; i++){
+        for(let j = 0; j < arr.length; j++){
+            if(arr[i] === arr[j]){
+                count++;
+                if(count > compare){
+                    compare = count;
+                    mostFrequent = arr[i];
+                }
+            }
 
-    //How to check wich counter element has more repetitions?
-    if(count[i] > count[i + 1]){
-        mostFrequent = count[i];
+        }
+        count = 0;
     }
-    
- 
-    document.getElementById("result4a").innerHTML = `The Array is: [ ${arr} ]`;
-    document.getElementById("result4b").innerHTML = `The element ${mostFrequent} appears ${count[i]} times.`;
 
+    document.getElementById("result4a").innerHTML = `The Array is: [ ${arr} ]`;
+    document.getElementById("result4b").innerHTML = `The element ${mostFrequent} appears ${compare} times.`;
 }
 
 
 //////////////Solution 5//////////////////////
-let image = document.querySelector("img");
+let image1 = document.getElementById("img1");
+let image2 = document.getElementById("img2");
 
 function mouseOver(){
-    image.src = "/images/blue.jpg";
+    image1.src = "/images/blue.jpg";
 }
 function mouseOut(){
-    image.src = "/images/green.jpg";
+    image1.src = "/images/green.jpg";
 }
 function mouseEnter(){
-    image.src = "/images/orange.jpg";
+    image2.src = "/images/orange.jpg";
 }
 function mouseLeave(){
-    image.src = "/images/pink.jpg";
+    image2.src = "/images/pink.jpg";
 }
 
 //////////////Solution 6//////////////////////
